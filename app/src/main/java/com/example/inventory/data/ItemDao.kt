@@ -25,7 +25,15 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 /**
- * Database access object to access the Inventory database
+ * Interface ItemDao berfungsi sebagai Data Access Object (DAO) untuk mengelola akses ke database
+ * Inventory. Metode getAllItems() mengembalikan daftar semua item yang diurutkan berdasarkan nama
+ * dalam urutan menaik. Metode gettItem(id: Int) mengambil satu item berdasarkan id yang diberikan.
+ * Fungsi insert(item: Item) memasukkan item baru ke dalam database dan menggunakan strategi konflik
+ * IGNORE, yang berarti Room akan mengabaikan jika ada item dengan data yang sama atau sudah ada.
+ * Fungsi update(item: Item) digunakan untuk memperbarui data item yang sudah ada, fungsi delete(item:
+ * Item) menghapus item dari database. Setiap operasi yang melibatkan perubahan data (insert, update,
+ * dan delete) ditandai dengan suspend, menandakan bahwa operasi ini harus dijalankan dalam coroutine
+ * atau fungsi non-blocking.
  */
 @Dao
 interface ItemDao {
